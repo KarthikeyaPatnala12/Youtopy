@@ -2,7 +2,7 @@ from instalooter.looters import ProfileLooter
 import datetime
 import dateutil.relativedelta
 
-# instalooter_test downloads videos posted by instbroo in the last month
+# instalooter downloads videos posted by instbroo in the last month
 
 # Instanciate 
 looter = ProfileLooter("instbroo", videos_only=True, template="{id}-{username}-{width}-{height}")
