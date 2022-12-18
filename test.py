@@ -1,6 +1,5 @@
 from datetime import datetime
 import instaloader
-import shutil
 import os
 
 L = instaloader.Instaloader()
@@ -18,14 +17,15 @@ def instapostsdownload(user):
         else:
             break
 
-instapostsdownload("instbrooo")
-instapostsdownload("telugu_meme_master")
+listof=["naughtyworld_","meme","succc.exe","baked.ziti.memes","meme_dealer","dankest_memes_m8","dystopiacity","hits_the_blunt","scoobydoograhamcrackers","_eldanko_","memelord","beanosofficial", "creamy1s","dank_meme_bandit","spicydeepfriedmemesv3","bepiz.man","andrew_lastname","cringepostrandy","nutposting","funnyhoodvidz","pubity","todayyearsold","epicfunnypage","sarcastic_us"]
+for i in listof:
+    instapostsdownload(i)
 
 
 
-
-path="C:/Users/madhu/OneDrive/Desktop/instascrapper"
-destination="C:/Users/madhu/OneDrive/Desktop/final"
+path=os.getcwd()
+os.mkdir(path+"/final")
+destination=path+"/final"
 for i in os.listdir(path):
     # print(i)
     if i.endswith(".py"):
@@ -42,5 +42,3 @@ for i in os.listdir(path):
                 src_path = os.path.join(source, j)
                 dst_path = os.path.join(destination, j)
                 os.rename(src_path, dst_path)
-    
-        
