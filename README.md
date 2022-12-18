@@ -1,3 +1,3 @@
-# Automated_Youtube_Channel
+# Automated Youtube Channel
 ### To create a fully automated Youtube channel
 #### 
