@@ -8,8 +8,8 @@ L = instaloader.Instaloader()
 
 posts = instaloader.Hashtag.from_name(L.context, "memes").get_posts()
 
-SINCE = datetime(2020, 5, 10)  # further from today, inclusive
-UNTIL = datetime(2020, 5, 11)  # closer to today, not inclusive
+From_date = datetime(2022, 12, 18)  # further from today, inclusive
+To_date = datetime(2022, 12, 19)  # closer to today, not inclusive
 
 k = 0  # initiate k
 #k_list = []  # uncomment this to tune k
@@ -17,9 +17,9 @@ k = 0  # initiate k
 for post in posts:
     postdate = post.date
 
-    if postdate > UNTIL:
+    if postdate > To_date:
         continue
-    elif postdate <= SINCE:
+    elif postdate <= From_date:
         k += 1
         if k == 50:
             break
