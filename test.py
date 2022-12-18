@@ -2,7 +2,6 @@ from datetime import datetime
 import instaloader
 import os
 
-L = instaloader.Instaloader()
 
 def instapostsdownload(user):
     posts = instaloader.Profile.from_username(L.context, user).get_posts()
@@ -17,13 +16,13 @@ def instapostsdownload(user):
         else:
             break
 
-file = open('instbrooo_following_usernames.txt','r')
-topology_list = file.readlines()
-for i in topology_list:
+listof=['memes', 'succc.exe', 'baked.ziti.memes', 'meme_dealer', 'dankest_memes_m8', 'dystopiacity', 'hits_the_blunt', 'scoobydoograhamcrackers', '_eldanko_', 'memelord', 'beanosofficial', 'creamy1s', 'dank_meme_bandit', 'spicydeepfriedmemesv3', 'bepiz.man', 'andrew_lastname', 'cringepostrandy', 'nutposting', 'funnyhoodvidz', 'pubity', 'todayyearsold', 'epicfunnypage']
+for i in listof:
+    L = instaloader.Instaloader()
     instapostsdownload(i)
 
 
-
+print("we have downloaded the posts and now we are going to ")
 path=os.getcwd()
 os.mkdir(path+"/final")
 destination=path+"/final"
@@ -39,4 +38,5 @@ for i in os.listdir(path):
                 src_path = os.path.join(source, j)
                 dst_path = os.path.join(destination, j)
                 os.rename(src_path, dst_path)
-           
+            
+
