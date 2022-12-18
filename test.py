@@ -1,5 +1,6 @@
 from datetime import datetime
 import instaloader
+import shutil
 import os
 
 L = instaloader.Instaloader()
@@ -20,13 +21,14 @@ def instapostsdownload(user):
 instapostsdownload("instbrooo")
 instapostsdownload("telugu_meme_master")
 
+
+
+
 path="C:/Users/madhu/OneDrive/Desktop/instascrapper"
-destination="C:/Users/madhu/OneDrive/Desktop/instascrapper/final"
+destination="C:/Users/madhu/OneDrive/Desktop/final"
 for i in os.listdir(path):
     # print(i)
     if i.endswith(".py"):
-        continue
-    if i=="final":
         continue
     else:
         source=path+f"/{i}"
@@ -40,4 +42,5 @@ for i in os.listdir(path):
                 src_path = os.path.join(source, j)
                 dst_path = os.path.join(destination, j)
                 os.rename(src_path, dst_path)
-        os.rmdir(source)
+    
+        
