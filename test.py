@@ -4,9 +4,6 @@ from moviepy.editor import *
 from datetime import datetime
 import instaloader
 
-
-
-
 def instapostsdownload(user):
     posts = instaloader.Profile.from_username(L.context, user).get_posts()
     SINCE = datetime.today().date() 
@@ -63,12 +60,8 @@ for i in os.listdir(path):
         source=os.path.join(path,i)
         shutil.rmtree(source,ignore_errors=True)
 
-
-
-
-
 video_file_name=["final_1.mp4","final_2.mp4","final_3.mp4","final_4.mp4"]
-text_file_name=["final_1.txt","final_2.txt","final_3.txt","final_4.txt"]
+# text_file_name=["final_1.txt","final_2.txt","final_3.txt","final_4.txt"]
 
 def final_video_creator():
     j=0
@@ -110,4 +103,3 @@ while count!=0:
             count+=1
     if count>0:
         final_video_creator()
-print("came out of loop")
