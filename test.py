@@ -1,6 +1,9 @@
+import os
+import shutil
+
 from datetime import datetime
 import instaloader
-import os
+
 
 
 def instapostsdownload(user):
@@ -24,19 +27,39 @@ for i in listof:
 
 print("we have downloaded the posts and now we are going to ")
 path=os.getcwd()
-os.mkdir(path+"/final")
-destination=path+"/final"
+destination=os.path.join(path,"final")
+shutil.rmtree(destination,ignore_errors=True)
+os.mkdir(destination)
+dest_text_file=os.path.join(destination,"data.txt")
+file=open(dest_text_file,"a+")
+file.close()
+
+
+
 for i in os.listdir(path):
     # print(i)
-    if i.endswith(".py"):
+    if i.endswith(".py") or i.endswith(".txt") or i=="LICENSE" or i.endswith(".md") or i.endswith(".git") or i.endswith(".csv") or i=="final":
         continue
     else:
-        source=path+f"/{i}"
+        source=os.path.join(path,i)
         os.chdir(source)
         for j in os.listdir(source):
             if j.endswith(".mp4"):
+                account_name=source[source.rfind("\\")+1:]
                 src_path = os.path.join(source, j)
                 dst_path = os.path.join(destination, j)
                 os.rename(src_path, dst_path)
-            
+                file_1=open(dest_text_file, 'r')
+                if account_name in file_1.read():
+                    file_1.close()
+                    break
+                file = open(dest_text_file, 'a+')
+                file.write(account_name+"\n")
+                file.close()
 
+for i in os.listdir(path):
+    if i.endswith(".py") or i.endswith(".txt") or i=="LICENSE" or i.endswith(".md") or i.endswith(".git") or i.endswith(".csv") or i=="final":
+        continue
+    else:
+        source=os.path.join(path,i)
+        shutil.rmtree(source,ignore_errors=True)
