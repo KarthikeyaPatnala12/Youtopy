@@ -1,6 +1,6 @@
 import os
 import shutil
-
+from moviepy.editor import *
 from datetime import datetime
 import instaloader
 
@@ -23,8 +23,6 @@ listof=['memes', 'succc.exe', 'baked.ziti.memes', 'meme_dealer', 'dankest_memes_
 for i in listof:
     L = instaloader.Instaloader()
     instapostsdownload(i)
-
-
 print("we have downloaded the posts and now we are going to ")
 path=os.getcwd()
 destination=os.path.join(path,"final")
@@ -63,3 +61,49 @@ for i in os.listdir(path):
     else:
         source=os.path.join(path,i)
         shutil.rmtree(source,ignore_errors=True)
+
+
+
+
+
+
+final_video_number=1
+# from lines 72-109 needs to be tested
+def final_video_creator():
+    j=0
+    duration=0
+    clipnames=[]
+    clip=[]
+    os.chdir(destination)
+    for i in os.listdir():
+        if i.endswith(".mp4") and not(i.startswith("final")) and not(i.endswith(".txt")):
+            clipnames.append(i)
+            clip_j=VideoFileClip(i)
+            clip.append(clip_j)
+            duration+=clip_j.duration
+            j+=1
+            if duration>=480:
+                break
+    final_video=concatenate_videoclips(clip)
+    final_video.write_videofile(f"final_{final_video_number}.mp4")
+    for i in clip:
+        i.close()
+    final_video.close()
+    del(clip)
+    for i in clipnames:
+        os.remove(i)
+    final_video_number+=1
+
+
+os.chdir(destination)
+
+count=1
+while count!=0:
+    count=0
+    for i in os.listdir():
+        if i.startswith("final") or i.endswith(".txt"):
+            pass
+        else:
+            count+=1
+    if count>0:
+        final_video_creator()
