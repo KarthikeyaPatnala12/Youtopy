@@ -21,7 +21,7 @@ listof=['memes', 'succc.exe', 'baked.ziti.memes', 'meme_dealer', 'dankest_memes_
 for i in listof:
     L = instaloader.Instaloader()
     instapostsdownload(i)
-print("we have downloaded the posts and now we are going to ")
+# print("we have downloaded the posts and now we are going to ")
 path=os.getcwd()
 destination=os.path.join(path,"final")
 shutil.rmtree(destination,ignore_errors=True)
@@ -60,10 +60,10 @@ for i in os.listdir(path):
         source=os.path.join(path,i)
         shutil.rmtree(source,ignore_errors=True)
 
-video_file_name=["final_1.mp4","final_2.mp4","final_3.mp4","final_4.mp4"]
 # text_file_name=["final_1.txt","final_2.txt","final_3.txt","final_4.txt"]
-
+video_file_name=["final_1.mp4","final_2.mp4","final_3.mp4","final_4.mp4"]
 def final_video_creator():
+    global video_file_name
     j=0
     duration=0
     clipnames=[]
