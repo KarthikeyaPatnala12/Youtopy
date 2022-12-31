@@ -1,9 +1,8 @@
 import os
 import shutil
-
+from moviepy.editor import *
 from datetime import datetime
 import instaloader
-from moviepy.editor import VideoFileClip
 
 
 
@@ -24,9 +23,7 @@ listof=['memes', 'succc.exe', 'baked.ziti.memes', 'meme_dealer', 'dankest_memes_
 for i in listof:
     L = instaloader.Instaloader()
     instapostsdownload(i)
-
-
-print("we have downloaded the posts and now we are going to ")
+# print("we have downloaded the posts and now we are going to ")
 path=os.getcwd()
 destination=os.path.join(path,"final")
 shutil.rmtree(destination,ignore_errors=True)
@@ -64,5 +61,3 @@ for i in os.listdir(path):
     else:
         source=os.path.join(path,i)
         shutil.rmtree(source,ignore_errors=True)
-
-
