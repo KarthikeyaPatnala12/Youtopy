@@ -3,6 +3,9 @@ import shutil
 from moviepy.editor import *
 from datetime import datetime
 import instaloader
+import moviepy.editor as mp
+
+import glob
 
 
 
@@ -61,3 +64,31 @@ for i in os.listdir(path):
     else:
         source=os.path.join(path,i)
         shutil.rmtree(source,ignore_errors=True)
+
+
+# Set the target width and height
+TARGET_WIDTH = 1920
+TARGET_HEIGHT = 1080
+
+# Specify the directory containing the videos
+video_dir = 'C:/Users/KARTHIKEYA PATNALA/Documents/GitHub/Youtopy/final/'
+
+# Create an empty list to store the resized clips
+resized_clips = []
+
+# Iterate through the files in the directory
+for filename in os.listdir(video_dir):
+    # Check if the file is a video
+    if filename.endswith('.mp4'):
+        # Create a VideoFileClip object
+        clip = mp.VideoFileClip(os.path.join(video_dir, filename))
+        # Resize the clip
+        resized_clip = clip.resize(height=TARGET_HEIGHT, width=TARGET_WIDTH)
+        # Add the resized clip to the list
+        resized_clips.append(resized_clip)
+
+# Concatenate the clips in the list
+final_clip = mp.concatenate_videoclips(resized_clips)
+
+# Save the final clip
+final_clip.write_videofile('C:/Users/KARTHIKEYA PATNALA/Documents/GitHub/Youtopy/final/compiled_video.mp4')
