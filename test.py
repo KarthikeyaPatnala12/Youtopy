@@ -22,7 +22,7 @@ def instapostsdownload(user):
         else:
             break
 
-listof=['memes', 'succc.exe', 'baked.ziti.memes', 'meme_dealer', 'dankest_memes_m8', 'dystopiacity', 'hits_the_blunt', 'scoobydoograhamcrackers', '_eldanko_', 'memelord', 'beanosofficial', 'creamy1s', 'dank_meme_bandit', 'spicydeepfriedmemesv3', 'bepiz.man', 'andrew_lastname', 'cringepostrandy', 'nutposting', 'funnyhoodvidz', 'pubity', 'todayyearsold', 'epicfunnypage']
+listof=['trolls_official','memes', 'succc.exe', 'baked.ziti.memes', 'meme_dealer', 'dankest_memes_m8', 'dystopiacity', 'hits_the_blunt', 'scoobydoograhamcrackers', '_eldanko_', 'memelord', 'beanosofficial', 'creamy1s', 'dank_meme_bandit', 'spicydeepfriedmemesv3', 'bepiz.man', 'andrew_lastname', 'cringepostrandy', 'nutposting', 'funnyhoodvidz', 'pubity', 'todayyearsold', 'epicfunnypage']
 for i in listof:
     L = instaloader.Instaloader()
     instapostsdownload(i)
@@ -71,7 +71,7 @@ TARGET_WIDTH = 1920
 TARGET_HEIGHT = 1080
 
 # Specify the directory containing the videos
-video_dir = 'C:/Users/KARTHIKEYA PATNALA/Documents/GitHub/Youtopy/final/'
+video_dir = destination
 
 # Create an empty list to store the resized clips
 resized_clips = []
@@ -91,4 +91,5 @@ for filename in os.listdir(video_dir):
 final_clip = mp.concatenate_videoclips(resized_clips)
 
 # Save the final clip
-final_clip.write_videofile('C:/Users/KARTHIKEYA PATNALA/Documents/GitHub/Youtopy/final/compiled_video.mp4')
+final_video_file=os.path.join(destination,"compiled_video.mp4")
+final_clip.write_videofile(final_video_file)
