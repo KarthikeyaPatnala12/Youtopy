@@ -2,6 +2,7 @@ import os
 import shutil
 from moviepy.editor import *
 from datetime import datetime
+import moviepy
 import instaloader
 import moviepy.editor as mp
 
@@ -79,21 +80,35 @@ video_dir = destination
 
 # Create an empty list to store the resized clips
 resized_clips = []
-
+i=0
 # Iterate through the files in the directory
 for filename in os.listdir(video_dir):
     # Check if the file is a video
     if filename.endswith('.mp4'):
         # Create a VideoFileClip object
         clip = mp.VideoFileClip(os.path.join(video_dir, filename))
+        original_aspect_ratio = clip.w / clip.h
         # Resize the clip
-        resized_clip = clip.resize(height=TARGET_HEIGHT, width=TARGET_WIDTH)
+        if(original_aspect_ratio!=1):
+            resized_clip = clip.resize(height=TARGET_HEIGHT, width=TARGET_WIDTH)
         # Add the resized clip to the list
+        
+
+        
+        if(original_aspect_ratio==1):
+            required_bar_size = int((1080 - (720 / original_aspect_ratio)) / 2)
+            new_clip = ColorClip((1920,1080), color=(0,0,0))
+            final_clip = moviepy.video.fx.all.margin(clip, top=required_bar_size, bottom=required_bar_size, color=(0,0,0)).set_position("center")
+            final_clip = final_clip.set_position("center")
+            final_clip.write_videofile(f"./output_{i}.mp4")
+            i+=1
         resized_clips.append(resized_clip)
+
+
 
 # Concatenate the clips in the list
 final_clip = mp.concatenate_videoclips(resized_clips)
 
-# Save the final clip
+# # Save the final clip
 final_video_file=os.path.join(destination,"compiled_video.mp4")
 final_clip.write_videofile(final_video_file)
