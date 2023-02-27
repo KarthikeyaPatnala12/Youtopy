@@ -25,7 +25,11 @@ def instapostsdownload(user):
 listof=['trolls_official','memes', 'succc.exe', 'baked.ziti.memes', 'meme_dealer', 'dankest_memes_m8', 'dystopiacity', 'hits_the_blunt', 'scoobydoograhamcrackers', '_eldanko_', 'memelord', 'beanosofficial', 'creamy1s', 'dank_meme_bandit', 'spicydeepfriedmemesv3', 'bepiz.man', 'andrew_lastname', 'cringepostrandy', 'nutposting', 'funnyhoodvidz', 'pubity', 'todayyearsold', 'epicfunnypage']
 for i in listof:
     L = instaloader.Instaloader()
-    instapostsdownload(i)
+    try:
+        instapostsdownload(i)
+    except Exception as e:    
+        print(e)
+
 # print("we have downloaded the posts and now we are going to ")
 path=os.getcwd()
 destination=os.path.join(path,"final")
