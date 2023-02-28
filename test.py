@@ -96,12 +96,7 @@ for filename in os.listdir(video_dir):
 
         
         if(original_aspect_ratio==1):
-            required_bar_size = int((1080 - (720 / original_aspect_ratio)) / 2)
-            new_clip = ColorClip((1920,1080), color=(0,0,0))
-            final_clip = moviepy.video.fx.all.margin(clip, top=required_bar_size, bottom=required_bar_size, color=(0,0,0)).set_position("center")
-            final_clip = final_clip.set_position("center")
-            final_clip.write_videofile(f"./output_{i}.mp4")
-            i+=1
+            continue
         resized_clips.append(resized_clip)
 
 
